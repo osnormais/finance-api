@@ -1,32 +1,33 @@
 package org.osnormais.finance.api.entity;
 
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.UUID;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "wallet")
+
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
+@Table(name = "wallets")
 public class Wallet {
-    @Id
+
+    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Id
     private UUID id;
     private String name;
-    private Long conta;
     private String description;
-    private LocalDate createdAt;
+    private Instant createdAt; 
 
 }
